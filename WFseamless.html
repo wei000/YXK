@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态图</title>
+    <style>
+        * {
+        	margin: 0;
+        	padding: 0;
+        	list-style: none;
+        }
+        
+        #container {
+        	width: 100%;
+        }
+        
+        #pictures {
+        	width: 100%;
+        	height: 1000px;
+        	overflow: hidden;
+        	position: relative;
+        }
+        
+        #ul1 {
+        	position: absolute;
+        	left: 0;
+        	top: 0;
+        	overflow: hidden;
+        }
+        
+        #ul1 li {
+        	float: left;
+        	width: 3840px;
+        	height: auto;
+        }
+        
+        #ul1 li img {
+        	width: 3840px;
+        	height: auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("pictures");
+            var oUl = document.getElementById("ul1");
+            var speed = -1;
+            var oLi = document.getElementsByTagName("li");
+            oUl.innerHTML += oUl.innerHTML;//先把图片增加一组
+            /*oUl.style.width = oLi.length * oLi[0].offsetWidth + "px";   */
+            function move() {
+                if (oUl.offsetLeft < -oUl.offsetWidth / 2) {
+                    oUl.style.left = "0";
+                }
+                oUl.style.left = oUl.offsetLeft + speed + "px";
+            }
+            var timer = setInterval(move, 1);
+            /*oDiv.onmouseover = function () {
+                clearInterval(timer);
+            };
+            oDiv.onmouseout = function () {
+                timer = setInterval(move, 30);
+            };*/
+        }
+    </script>
+</head>
+	<body>
+ 	    <div id="container">
+	         <div id="pictures">
+	            <ul id="ul1">
+	                <li>
+	                    <img src="img/headbg/section_1_bg_1.jpg" alt="">
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</body>
+</html>

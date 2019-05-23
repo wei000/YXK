@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.index-banner {
+				position: relative;
+				width: 473px;
+				height: 317px;
+				overflow: hidden;
+				border-radius: 4px;
+				margin-top: -4px;
+			}
+			
+			.banner-list {
+				position: absolute;
+				width: 3000px;
+				height: 317px;
+				left: -473px;
+			}
+			
+			.banner-list a {
+				display: block;
+				float: left;
+				width: 473px;
+				height: 317px;
+			}
+			
+			.banner1 {
+				background: url(img/10.png) no-repeat;
+				background-size: 473px 317px;
+			}
+			
+			.banner2 {
+				background: url(img/5.png) no-repeat;
+				background-size: 473px 317px;
+			}
+			
+			.banner3 {
+				background: url(img/6.jpeg) no-repeat;
+				background-size: 473px 317px;
+			}
+			
+			.slide {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				bottom: 20px;
+				transform: translateX(-50%);
+			}
+			
+			.slide span {
+				display: inline-block;
+				cursor: pointer;
+				margin-right: 10px;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background: #ffb432;
+				box-shadow: 0 0 4px #ffb432;
+			}
+			
+			.slide .active {
+				background-color: #ffb432;
+				width: 30px;
+				border-radius: 10px;
+			}
+			
+			.arrow {
+				opacity: 0;
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				z-index: 1000;
+				width: 40px;
+				height:40px;
+				line-height: 40px;
+				font-size: 35px;
+				text-align: center;
+				background-color: rgba(0, 0, 0, .3);
+				color: #fff;
+				transform: translateY(-50%);
+				text-decoration: none;
+				border-radius: 50%;
+				transition:all 1s linear; 
+			}
+			
+			.arrow:hover {
+				background-color: rgba(0, 0, 0, .7);
+			}
+			
+			.index-banner:hover .arrow {
+				opacity: 1;
+				overflow: hidden;
+			}
+			
+			#prev {
+				left: 20px;
+			}
+			
+			#next {
+				right: 20px;
+			}
+			#new1{
+				padding: 4px;
+				border: 2px solid #cccccc;
+				width: 473px;
+				margin: 0 auto;
+				border-radius: 10px;
+				background: white;
+				box-shadow: 0 0 4px #cccccc;
+			}
+			img:nth-child(2){
+				width: 285px;
+				position: absolute;
+				z-index: 100;
+				margin-left: -190px;
+				margin-top: 68px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="new1">
+			<img src="img/title_version.jpg"/ width="473px">
+			<img src="img/left_decorate.png"/>
+			<div class="index-banner" id="banner">
+				<div class="banner-list" id="banner-list">
+					<a href="javascript:;" class="banner3"></a>
+					<a href="javascript:;" class="banner1"></a>
+					<a href="javascript:;" class="banner2"></a>
+					<a href="javascript:;" class="banner3"></a>
+					<a href="javascript:;" class="banner1"></a>
+				</div>
+				<div class="slide" id="slideBtn">
+					<span index="1" class="active"></span>
+					<span index="2"></span>
+					<span index="3"></span>
+				</div>
+				<a href="javascript:;" id="prev" class="arrow"><</a>
+				<a href="javascript:;" id="next" class="arrow">></a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+				var banner = document.querySelector('#banner'); //获取用到的dom
+				var list = document.querySelector('#banner-list');
+				var slideBtn = document.querySelector('#slideBtn').querySelectorAll('span');
+				var prev = document.querySelector('#prev');
+				var next = document.querySelector('#next');
+				var index = 1;
+				var animated = false;
+				prev.onclick = function() { //设置点击前一张的事件，先通过判断当前index是否为第一个，如果是就把index指向最后一个，否则直接index-1，
+					if(!animated) {      
+						if(index === 1) {      
+							index = 3;     
+						} else {      
+							index -= 1;     
+						}      
+						animate(473);      
+						showBtn();     
+					}       //这如果animated是false，表示当前没有动画正在进行，可以进行图片移动，如果是true，即表示有动画在进行，即使我进行点击也是没
+					//有意义，必须当动画停止下来再可以执行，然后根据情况改变index，设置图片的位移，改变下标样式
+				}
+				next.onclick = function() {
+					if(index === 3) {
+						index = 1;
+					} else {
+						index += 1; //同上
+					}
+					if(!animated) {
+						animate(-473);
+					}
+					showBtn();
+				}
+
+				function showBtn() {
+					for(var i = 0; i < slideBtn.length; i++) { //根据当前的index，用排他思想，把所有的下标设为没有active，再把第index-1个设为有的
+						if(slideBtn[i].className === 'active') {
+							slideBtn[i].className = '';
+							break;
+						}
+					}
+					slideBtn[index - 1].className = 'active';
+				}
+
+				function animate(offset) {
+					animated = true;
+					var newLeft = offset + list.offsetLeft; //位移后的位置
+					var time = 300; //移动总时长
+					var interval = 10; //移动的间隔时间
+					var speed = offset / (time / interval); //每一次移动的位移
+					//位移时每一次移动speed都调用该函数，为递归函数
+
+					function go() {
+						if((speed < 0 && list.offsetLeft > newLeft) || (speed > 0 && list.offsetLeft < newLeft)) { //左边是代表向左移动，右边是向右，list.offsetLeft>newLeft代表当前
+							//位置还没达到目标位置
+							list.style.left = list.offsetLeft + speed + 'px'; //既然没达到，那就需要移动图片
+							setTimeout(go, interval); //递归调用此函数，每次移动一点点，直到当前位移等于目标，就跳到else
+						} else {
+							animated = false; //动画结束，设为fales
+							list.style.left = newLeft + 'px'; //设置当前位移
+							if(newLeft > -473) {
+								list.style.left = '-1419px'; //如果当前图片是附属图片，那就切换到他真正的位置，因为两张图片是一样的，切换是一瞬间
+							} //的事情，所以看不出来
+							if(newLeft < -1419) {
+								list.style.left = '-473px';
+							}
+						}
+					}
+					go();
+
+				}
+				for(var i = 0; i < slideBtn.length; i++) { //给下标绑定点击事件，用点击的index减去当前的index，再乘每张图片的-width，就可以得出应该位移的距离
+					var button = slideBtn[i]; //因为乘的是负数，因此不用考虑向左移还是向右移这个问题。最后的offset如果是正的，就代表向右移，反之
+					button.onclick = function() {
+						if(this.className === 'active') {
+							return;
+						}
+
+						var myIndex = parseInt(this.getAttribute('index'));
+
+						var offset = -473 * (myIndex - index);
+						if(!animated) {
+							animate(offset);
+						}
+
+						index = myIndex;
+						showBtn();
+					}
+				}
+				var timer;
+
+				function play() { //设置一个定时器，自动执行next.onclick事件，自动轮播
+					timer = setInterval(function() {
+						next.onclick();
+					}, 3000);
+				}
+
+				function stop() {
+					clearInterval(timer);
+				}
+				banner.onmouseover = stop;
+				banner.onmouseout = play;
+				play();
+			}
+		</script>
+	</body>
+
+</html>

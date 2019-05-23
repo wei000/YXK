@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.vjs-paused .vjs-big-play-button,
+			.vjs-paused.vjs-has-started .vjs-big-play-button {
+				display: block;
+			}
+			
+			.video-js.vjs-playing .vjs-tech {
+				pointer-events: auto;
+			}
+			
+			.video-js .vjs-time-control {
+				display: block;
+			}
+			
+			.video-js .vjs-remaining-time {
+				display: none;
+			}
+			
+			#wh{
+				width: 1024px;
+				height: 576px;
+				position: absolute;
+	            top: 50%;
+	            left: 50%;
+	            -webkit-transform: translate(-50%, -50%);
+	            -moz-transform: translate(-50%, -50%);
+	            -ms-transform: translate(-50%, -50%);
+	            -o-transform: translate(-50%, -50%);
+	            transform: translate(-50%, -50%);
+			}
+			
+			#head1 {
+				width: 1024px;
+				height: 40px;
+				background-color: black;
+				border-radius: 10px 10px 0em 0em;
+			}
+			
+			#labelp {
+				width: 1024px;
+				height: 40px;
+				background-color: black;
+				border-radius: 0em 0em 10px 10px;
+			}
+			
+			#head1>img {
+				margin-top: -4px;
+				float: right;
+			}
+			
+			#perfective {
+				background-color: rgba(0, 0, 0, 0.4);
+				position: fixed;
+			}
+		</style>
+	</head>
+
+	<body onload="window.onresize()">
+		<div id="perfective">
+			<div id="wh">
+				<div id="head1">
+					<img src="img/close.png" onclick="imgup()" />
+				</div>
+				<video id='my-video' class='video-js vjs-big-play-centered' controls width='1024' height='576' poster='img/airBubble.png' data-setup='{}' playsinline>
+					<source src='img/cg_pv_cover.mp4' type='video/mp4'>
+				</video>
+				<div id="labelp"></div>
+			</div>
+		</div>
+		<script src='https://vjs.zencdn.net/7.5.4/video.js'></script>
+		<script>
+			window.onresize = function() {
+				autodivheight();
+			};
+			function autodivheight() { //函数：获取尺寸
+				//获取浏览器窗口高度
+				var winHeight = 0;
+				var winWidth = 0;
+				if(window.innerHeight){
+					winHeight = window.innerHeight;
+				}
+				else if((document.body) && (document.body.clientHeight)){
+					winHeight = document.body.clientHeight;
+				}
+				if(window.innerWidth){
+					winWidth = window.innerWidth;
+				}
+				else if((document.body) && (document.body.clientWidth)){
+					winWidth = document.body.clientWidth;
+				}
+				//通过深入Document内部对body进行检测，获取浏览器窗口高度
+				if(document.documentElement && document.documentElement.clientHeight){
+					winHeight = document.documentElement.clientHeight;
+				}
+				if(document.documentElement && document.documentElement.clientWidth){
+					winWidth = document.documentElement.clientWidth;
+				}
+				//DIV高度为浏览器窗口的高度
+				document.getElementById("perfective").style.height = winHeight + "px";
+				document.getElementById("perfective").style.width = winWidth + "px";
+			}
+			function imgup() {
+				document.getElementById("perfective").style.display = "none";
+			}
+		</script>
+	</body>
+
+</html>

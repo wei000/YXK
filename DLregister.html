@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 18px;
+			}
+			
+			#new1 {
+				background-color: #eaeaea;
+				position: fixed;
+				overflow-y: scroll;
+			}
+			
+			#dl1 {
+				border-radius: 10px;
+				width: 612px;
+				height: 720px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				box-shadow: 0px 0px 20px #888888;
+			}
+			
+			.dl {
+				width: 180px;
+				height: 72px;
+				text-align: center;
+				font-weight: 700;
+				font-size: 25.2px;
+				line-height: 3em;
+				margin-top: 4px;
+			}
+			
+			#az {
+				color: #5faddf;
+				float: left;
+				cursor: pointer;
+			}
+			
+			#bz {
+				display: inline-block;
+				cursor: pointer;
+			}
+			
+			.zhong {
+				margin: 0 auto;
+				width: 360px;
+			}
+			
+			#azbz {
+				border-bottom: 1px solid rgba(234, 234, 234, 0.4);
+				padding-top: 53px;
+				height: 80.76px;
+				color: white;
+			}
+			
+			.inputt {
+				outline: none;
+				border: none;
+				border-bottom: 1px solid rgba(234, 234, 234, 0.4);
+				width: 360px;
+				height: 40.38px;
+				font-size: 25.2px;
+				font-weight: 100;
+				caret-color: white;
+				margin-top: 50px;
+				background-color: transparent;
+				color: white;
+			}
+			
+			input::-webkit-input-placeholder,
+			textarea::-webkit-input-placeholder {
+				/* WebKit browsers */
+				color: #B3B3B3;
+			}
+			
+			input:-moz-placeholder,
+			textarea:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: #B3B3B3;
+			}
+			
+			input::-moz-placeholder,
+			textarea::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: #B3B3B3;
+			}
+			
+			input:-ms-input-placeholder,
+			textarea:-ms-input-placeholder {
+				/* Internet Explorer 10+ */
+				color: #B3B3B3;
+			}
+			
+			#btn {
+				border: none;
+				background-color: transparent;
+				outline: none;
+				color: #74d8f1;
+				font-size: 18px;
+				position: absolute;
+				margin-top: -31px;
+				margin-left: 245px;
+				cursor: pointer;
+			}
+			
+			#btnm {
+				border: none;
+				background-color: transparent;
+				outline: none;
+				width: 360px;
+				height: 66px;
+				background-color: #4ea4dc;
+				color: white;
+				font-size: 21.6px;
+				font-weight: 400;
+				border-radius: .2rem;
+				margin-top: 70px;
+				cursor: pointer;
+			}
+			
+			#btnm:hover {
+				background-color: #74D9F1;
+			}
+			
+			a {
+				text-decoration: none;
+				out-line: none;
+				color: #74d9f1;
+				font-size: 18px;
+				line-height: 60px;
+			}
+			
+			.a2 {
+				float: right;
+			}
+			
+			#put1,
+			#dl1,
+			#row {
+				display: none;
+			}
+			
+			#row {
+				position: absolute;
+				top: 2%;
+				left: 50%;
+				transform: translate(-50%, 0%);
+			}
+			
+			#aa {
+				padding-bottom: 206.5px;
+			}
+			
+			.fullscreenvideo {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: -100;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+			}
+			
+			.videocontainer_1 {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				z-index: -100;
+			}
+			
+			.videocontainer:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: block;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				background-color: #eaeaea;
+			}
+			
+			.videoct:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: block;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				background: rgba(25, 29, 34, .65);
+			}
+			
+			#bgvid {
+				display: none;
+			}
+			
+			#loading {
+				background-color: #FFF;
+				height: 100%;
+				width: 100%;
+				position: fixed;
+				z-index: 1;
+				margin-top: 0px;
+				top: 0px;
+			}
+			
+			#loading-center {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			
+			#loading-center-absolute {
+				position: absolute;
+				left: 50%;
+				top: 40%;
+				height: 200px;
+				width: 200px;
+				margin-top: -100px;
+				margin-left: -100px;
+			}
+			
+			h2 {
+				color: #17607d;
+				font: 12px/30px "Microsoft Yahei";
+				margin-top: 200px;
+				text-align: center
+			}
+			
+			.object {
+				-moz-border-radius: 50% 50% 50% 50%;
+				-webkit-border-radius: 50% 50% 50% 50%;
+				border-radius: 50% 50% 50% 50%;
+				position: absolute;
+				border-top: 5px solid #17607d;
+				border-bottom: 5px solid transparent;
+				border-left: 5px solid #17607d;
+				border-right: 5px solid transparent;
+				/*绑定动画在div*/
+				-webkit-animation: animate 2s infinite;
+				animation: animate 2s infinite;
+			}
+			
+			#object_one {
+				left: 75px;
+				top: 75px;
+				width: 50px;
+				height: 50px;
+			}
+			
+			#object_two {
+				left: 65px;
+				top: 65px;
+				width: 70px;
+				height: 70px;
+				/*定义动画开始的时间*/
+				-webkit-animation-delay: 0.2s;
+				animation-delay: 0.2s;
+			}
+			
+			#object_three {
+				left: 55px;
+				top: 55px;
+				width: 90px;
+				height: 90px;
+				-webkit-animation-delay: 0.4s;
+				animation-delay: 0.4s;
+			}
+			
+			#object_four {
+				left: 45px;
+				top: 45px;
+				width: 110px;
+				height: 110px;
+				-webkit-animation-delay: 0.6s;
+				animation-delay: 0.6s;
+			}
+			
+			@keyframes animate {
+				50% {
+					/*旋转动画   定义2d旋转 横向旋转*/
+					-ms-transform: rotate(360deg) scale(0.8);
+					-webkit-transform: rotate(360deg) scale(0.8);
+					transform: rotate(360deg) scale(0.8);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<img src="img/miHoYo_Logo_451cbfd2.png" width="200px" id="row" />
+			<div id="dl1">
+				<div id="denglu">
+					<div id="azbz" class="zhong">
+						<div id="az" class="dl" onclick="lk(),lk1()">验证码登陆</div>
+						<div id="ab" style="width: 180px;border-bottom: 4px solid #5faddf;position: absolute;margin-top: 77px;"></div>
+						<div id="bz" class="dl" onclick="lk(),lk2()">密码登录</div>
+					</div>
+					<div class="zhong" id="put">
+						<input type="text" id="ipq" class="inputt" placeholder="用户名" onfocus="fn1()" onblur="fn2()" />
+						<div id="df" style="width: 0px;"></div>
+						<input type="password" class="inputt" id="opq" placeholder="密码" onfocus="fn3()" onblur="fn4()" />
+						<div id="df1" style="width: 0px;"></div>
+						<button id="btn">获取验证码</button>
+					</div>
+					<div class="zhong" id="put1">
+						<input type="text" id="ipq1" class="inputt" placeholder="手机号/邮箱/用户名" onfocus="fn5()" onblur="fn6()" />
+						<div id="df2" style="width: 0px;"></div>
+						<input type="password" class="inputt" id="opq1" placeholder="密码" onfocus="fn7()" onblur="fn8()" />
+						<div id="df3" style="width: 0px;"></div>
+					</div>
+					<div class="zhong" id="">
+						<button id="btnm">登录</button>
+					</div>
+					<div class="zhong" id="aa">
+						<a id="a1" href="">遇到问题？</a>
+						<a class="a2" href="zhuce.html" onclick="fn9()">立即注册</a>
+					</div>
+				</div>
+			</div>
+			<div class="videocontainer videocontainer_1" id="bgb">
+				<video class="fullscreenvideo" poster="img/game_pv_cover.jpg" id="bgvid" playsinline="" muted="" loop="">
+					<source src="img/2.9pv.mp4" type="audio/mp4"></source>
+				</video>
+			</div>
+			<div id="loading">
+				<div id="loading-center">
+					<div id="loading-center-absolute">
+						<div class="object" id="object_four"></div>
+						<div class="object" id="object_three"></div>
+						<div class="object" id="object_two"></div>
+						<div class="object" id="object_one"></div>
+						<h2>加载中……</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			setTimeout(function() {
+				lod.style.display = "none";
+				vd.classList.add("videoct");
+				vd.classList.remove("videocontainer");
+				video.style.display = "block";
+				video.play();
+			}, 3000);
+			var lod = document.getElementById("loading");
+			var video = document.getElementById('bgvid');
+			var vd = document.getElementById("bgb");
+			//播放速度
+			video.playbackRate = 1;
+			(function() {
+				var video;
+				var scale = 0.8;
+				var initialize = function() {
+					video = document.getElementById("bgvid");
+					video.addEventListener('loadeddata', captureImage); // 用于向指定元素添加事件句柄。
+				};
+
+				var captureImage = function() {
+					var canvas = document.createElement("canvas"); // 创建一个画布
+					canvas.width = video.videoWidth * scale;
+					canvas.height = video.videoHeight * scale;
+					canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); // getContext:设置画布环境；drawImage:画画 
+
+					var img = document.createElement("img");
+					img.src = canvas.toDataURL("image/png"); // 获取图片的url
+				};
+
+				initialize();
+			})();
+		</script>
+		<script>
+			function autodivheight() { //函数：获取尺寸
+				//获取浏览器窗口高度
+				var winWidth = 0;
+				if(window.innerWidth) {
+					winWidth = window.innerWidth;
+				} else if((document.body) && (document.body.clientWidth)) {
+					winWidth = document.body.clientWidth;
+				}
+				//通过深入Document内部对body进行检测，获取浏览器窗口高度
+				if(document.documentElement && document.documentElement.clientWidth) {
+					winWidth = document.documentElement.clientWidth;
+				}
+				//DIV高度为浏览器窗口的高度
+				if(winWidth < 1920) {
+					document.getElementById("row").style.display = "none";
+				} else if(winWidth >= 1920) {
+					document.getElementById("row").style.display = "block";
+				}
+			}
+			window.onresize = function() {
+				autodivheight();
+			};
+			window.onload = function() {
+				setTimeout(function() {
+					document.getElementById("dl1").style.display = "block";
+					autodivheight();
+				}, 3000);
+			};
+
+			function lk() {
+				var oo = document.getElementById("btnm");
+				oo.innerHTML = "登&nbsp;&nbsp;录";
+				setTimeout(function() {
+					var oo = document.getElementById("btnm");
+					oo.innerHTML = "登录";
+				}, 400);
+			}
+
+			function lk2() {
+				var bew = document.getElementById("put");
+				var bew1 = document.getElementById("put1");
+				var bew2 = document.getElementById("az");
+				var bew3 = document.getElementById("bz");
+				var bwq = document.getElementById("ab");
+				bew.style.display = "none";
+				bew1.style.display = "block";
+				bew2.style.color = "white";
+				bwq.style.marginLeft = "180px";
+				bew3.style.color = "#5faddf";
+				bwq.style.transition = "all 1s";
+			}
+
+			function lk1() {
+				var bew = document.getElementById("put");
+				var bew1 = document.getElementById("put1");
+				var bew2 = document.getElementById("az");
+				var bew3 = document.getElementById("bz");
+				var bwq = document.getElementById("ab");
+				bew.style.display = "block";
+				bew1.style.display = "none";
+				bew2.style.color = "#5faddf";
+				bwq.style.marginLeft = "0px";
+				bew3.style.color = "white";
+				bwq.style.transition = "all 1s";
+			}
+		</script>
+		<script>
+			function fn1() {
+				var oo = document.getElementById("df");
+				oo.style.borderTop = "1px solid #5faddf";
+				oo.style.width = "360px";
+				oo.style.transition = "width 2s";
+			}
+
+			function fn2() {
+				var oo = document.getElementById("df");
+				oo.style.width = "0px";
+				oo.style.transition = "width 2s";
+			}
+
+			function fn3() {
+				var oo = document.getElementById("df1");
+				oo.style.borderTop = "1px solid #5faddf";
+				oo.style.width = "360px";
+				oo.style.transition = "width 2s";
+			}
+
+			function fn4() {
+				var oo = document.getElementById("df1");
+				oo.style.width = "0px";
+				oo.style.transition = "width 2s";
+			}
+
+			function fn5() {
+				var zbc = document.getElementById("df2");
+				zbc.style.borderTop = "1px solid #5faddf";
+				zbc.style.width = "360px";
+				zbc.style.transition = "width 2s";
+			}
+
+			function fn6() {
+				var zbc = document.getElementById("df2");
+				zbc.style.width = "0px";
+				zbc.style.transition = "width 2s";
+			}
+
+			function fn7() {
+				var zbc = document.getElementById("df3");
+				zbc.style.borderTop = "1px solid #5faddf";
+				zbc.style.width = "360px";
+				zbc.style.transition = "width 2s";
+			}
+
+			function fn8() {
+				var zbc = document.getElementById("df3");
+				zbc.style.width = "0px";
+				zbc.style.transition = "width 2s";
+			}
+		</script>
+	</body>
+
+</html>

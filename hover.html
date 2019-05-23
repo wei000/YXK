@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.aa{
+				width: 146.8px;
+				height: 140px;
+				background: rgba(0,195,255,0.5);
+				transform: skew(-10deg);
+				border-radius: 18px;
+				margin-left: 100px;
+				border: 3px solid red;
+				overflow: hidden;
+				position: relative;
+				transition: all 0.5s;
+			}
+			.aa>img{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform:skew(10deg) translate(-42%,-50%);
+			}
+			.aa:hover{
+				background: rgba(230,215,119,0.5);
+				transform: scale(1.1,1.1) skew(-10deg);
+				transition: all 0.5s; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aa">
+			<img src="img/bronya/bronya_c6.png"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				user-select:none;
+			}
+			
+			ul {
+				list-style: none;
+				position: relative;
+				width: 960px;
+				height: 54px;
+				margin: 0 auto;
+				text-align: center;
+				transform: skew(-10deg);
+			}
+			
+			#daoh {
+				position: fixed;
+				top: 16px;
+				left: 0;
+				width: 100%;
+				min-width: 1024px;
+				z-index: 1000;
+				font-size: 18px;
+			}
+			
+			ul>li {
+				float: left;
+				width: 106.48px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				background: rgba(168, 168, 168, 0.5);
+				margin-right: 8px;
+				color: white;
+				line-height: 50px;
+				cursor: pointer;
+			}
+			
+			ul>li>p {
+				transform: skew(10deg);
+				cursor: pointer;
+			}
+			
+			ul>li:hover {
+				border-color: rgba(255, 195, 0);
+			}
+			
+			.yangshi {
+				background-color: #00c3ff;
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="daoh">
+			<ul>
+				<li class="yangshi">
+					<p>首页</p>
+				</li>
+				<li>
+					<p>作战资讯</p>
+				</li>
+				<li>
+					<p>角色介绍</p>
+				</li>
+				<li>
+					<p>漫画音乐</p>
+				</li>
+				<li>
+					<p>壁纸下载</p>
+				</li>
+				<li>
+					<p>成长关爱</p>
+				</li>
+				<li>
+					<p>周边商城</p>
+				</li>
+				<li>
+					<p>我的账户</p>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var li = document.getElementsByTagName('li');
+			for(var i = 0; i < li.length; i++){
+				li[i].onclick = function() {
+					for(var i = 0; i < li.length; i++){
+						li[i].className = '';
+					}
+					this.className = 'yangshi';
+				}
+			}
+		</script>
+	</body>
+
+</html>

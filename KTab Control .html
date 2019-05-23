@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				cursor: pointer;
+				user-select:none;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			#zxxc {
+				width: 520px;
+				height: 316px;
+				position: absolute;
+				left: 100px;
+				background-color: #666666;
+				opacity: 0.6;
+			}
+			
+			#zxxc li:hover {
+				color: #00FFFF;
+			}
+			#zxxc a:hover {
+				color: #00FFFF;
+			}
+			.biaoti {
+				width: 490px;
+				height: 58px;
+				margin-left: 14px;
+				font-size: 20px;
+				border-bottom: 1px solid #00FFFF;
+			}
+			
+			.biaoti h3 {
+				float: left;
+				color: white;
+			}
+			.biaoti>img{
+				float: right;
+				margin-top: 38px;
+			}
+			.biaoti>h3>span {
+				font-weight: normal;
+				display: block;
+				float: left;
+				width: 86px;
+				height: 55px;
+				text-align: center;
+				line-height: 57px;
+			}
+			.beng3{
+				margin-top: 10px;
+			}
+			.beng3 li {
+				color: white;
+				font-size: 15px;
+				margin-top: -4px;
+			}
+			
+			.beng3 li a {
+				color: white;
+				text-decoration: none;
+				display: inline-block;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				width: 293px;
+				height: 41px;
+				line-height: 41px;
+				margin-left: 14px;
+			}
+			
+			.beng3>ul>li>span {
+				float: right;
+				padding-right: 15px;
+				width: 83px;
+				height: 41px;
+				white-space: nowrap;
+				line-height: 41px;
+			}
+			
+			.undis {
+				display: none;
+			}
+			
+			.dis {
+				display: block;
+			}
+			
+			.topC1 {
+				background: rgba(0,0,0,0.6);
+				color: #00FFFF;
+				border-bottom: 2px solid #007FD5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="zxxc">
+			<div class="biaoti" id="arr">
+				<h3>
+					<span>最新</span>
+					<span>新闻</span>
+					<span>公告</span>
+					<span>活动</span>
+					<span>攻略</span>
+				</h3>
+				<img src="img/more_news.png"/>
+			</div>
+			<div class="beng3" id="all">
+				<ul>
+					<li>
+						<a href="#">[攻略]爱酱的英魂殿|[叶采章]</a><span>2018-05-25</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 全新圣痕「叶采章」即将加入精准补给</a><span>2018-05-24</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 吼姆乐园，梦幻开启！</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 【律者档案】极限挑战开启！</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 公告 ] 封禁名单（2018年5月23日）</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱军械库 | 「永暮双狼」</a><span>2018-05-17</span></li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">[ 新闻 ] 全新圣痕「叶采章」即将加入精准补给</a><span>2018-05-24</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 吼姆乐园，梦幻开启！</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 【律者档案】极限挑战开启！</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 精准目标：幽色咏叹调、5th圣遗物、浓姬</a><span>2018-05-10</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 白夜执事、第六夜想曲扩充补给开启</a><span>2018-05-10</span></li>
+					<li>
+						<a href="#">[ 新闻 ] 【怪盗降临】累计消耗水晶送S卡</a><span>2018-05-10</span></li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">[ 公告 ] 封禁名单（2018年5月23日）</a><span>2018-05-23</span></li>
+					<li>
+						<a href="#">[ 公告 ] 5月12日商店异常的补偿及处理说明</a><span>2018-05-12</span></li>
+					<li>
+						<a href="#">[ 公告 ] 【天命之战】2.3版本更新公告</a><span>2018-05-10</span></li>
+					<li>
+						<a href="#">[ 公告 ] 萃取、重载活动常见疑问解答</a><span>2018-05-10</span></li>
+					<li>
+						<a href="#">[ 公告 ] 5月10日版本更新维护通知</a><span>2018-05-09</span></li>
+					<li>
+						<a href="#">[ 公告 ] 封禁名单（2018年5月2日）</a><span>2018-05-02</span></li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">[ 活动 ] 考试祭 | 迦尼萨的再袭</a><span>2017-02-17</span></li>
+					<li>
+						<a href="#">[ 活动 ] 圣诞小镇系列任务活动预告</a><span>2016-12-22</span></li>
+					<li>
+						<a href="#">[ 活动 ] 预登录活动奖励确认中</a><span>2016-08-09</span></li>
+					<li>
+						<a href="#">[ 活动 ] 《崩坏AI娘爱酱绝对不会告诉玩家</a><span>2016-07-04</span></li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱的英魂殿 | 「叶采章」</a><span>2018-05-25</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱军械库 | 「永暮双狼」</a><span>2018-05-17</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 「第六夜想曲」攻略 | 你的心，就由我收下了</a><span>2018-05-16</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱军械库 | 「幽色咏叹调」</a><span>2018-05-11</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱的英魂殿 | 「莫奈」</a><span>2018-04-19</span></li>
+					<li>
+						<a href="#">[ 攻略 ] 爱酱的军械库 | 「虚无之刃」</a><span>2018-04-11</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var Tags = document.getElementById('arr').getElementsByTagName('span');
+			var TagsCnt = document.getElementById('all').getElementsByTagName('ul');
+			var len = Tags.length;
+			var flag = 0;
+			for(i = 0; i < len; i++) {
+				Tags[i].value = i;
+				Tags[i].onclick = function() {
+					changeNav(this.value)
+				};
+				TagsCnt[i].className = 'undis';
+			}
+			Tags[flag].className = 'topC1';
+			TagsCnt[flag].className = 'dis';
+
+			function changeNav(v) {
+				Tags[flag].className = '';
+				TagsCnt[flag].className = 'undis';
+				flag = v;
+				Tags[v].className = 'topC1';
+				TagsCnt[v].className = 'dis';
+			}
+		</script>
+	</body>
+
+</html>

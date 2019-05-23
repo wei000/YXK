@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Great+Vibes);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+[class*="entypo-"]:before {
+	font-family: 'entypo', sans-serif;
+	display: inline-block;
+	margin-right: .5rem;
+}
+
+.galeria {
+	margin: 2vh auto 0;
+	width: 40vw;
+	transform-style: preserve-3d;
+}
+.galeria:before {
+	content: '';
+	padding-top: 56.25%;
+	/* 背景图片预留空间 */
+	display: inline-block;
+	width: 0;
+}
+
+.card {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	font-family: 'Great Vibes';
+	font-size: 30px;
+	color: #fff;
+	background-size: 2px 2px, cover;
+	background-repeat: repeat, none;
+	background-position: 0 0;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
+	border-radius: 3px;
+}
+
+.una {
+	background:rgba(0, 0, 0, .5) url(../img/5.png) no-repeat center;
+}
+
+.dos {
+	background:rgba(0, 0, 0, .5) url(../img/10.png) no-repeat center;
+}
+
+.tres {
+	background:rgba(0, 0, 0, .5) url(../img/6.jpeg) no-repeat center;
+}
+
+input {
+	visibility: hidden;
+}
+
+label {
+	position: absolute;
+	/* 当一个元素设置为绝对定位时，后面的元素会补充它的位置。 */
+	top: 0;
+	bottom: 0;
+	width: 2vw;
+	height: 8vh;
+	line-height: 8vh;
+	margin: auto 0;
+	background: #15BFCC;
+	color: #fff;
+	font-size: 2vw;
+	text-align: right;
+	padding: 0 .5vw;
+	cursor: pointer;
+	opacity: .2;
+	transition: .5s linear;
+	border-radius: 10px;
+}
+
+.otra+.otra,
+#uno:checked~.tres .afin,
+#dole:checked~.una .afin,
+#tele:checked~.dos .afin {
+	right: 0;
+	text-align: left;
+}
+
+#uno:checked~.una .otra,
+#dole:checked~.dos .otra,
+#tele:checked~.tres .otra {
+	background: #0D757D;
+	display: block;
+}
+
+#uno:checked~.una .afin,
+#dole:checked~.dos .afin,
+#tele:checked~.tres .afin,
+:not(:checked)~.otra {
+	display: none;
+}
+
+.card:hover label {
+	animation: pulso 1s infinite alternate;
+}
+
+.card:hover label+label {
+	animation-delay: .5s;
+}
+
+.card:hover label:hover {
+	animation: none;
+	opacity: .8;
+	width: 4vw;
+	font-size: 4vw;
+}
+
+#uno:checked~.dos,
+#dole:checked~.tres,
+#tele:checked~.una {
+	animation: 1s fuera-izq;
+	animation-fill-mode: forwards;
+	transform-origin: center left;
+	z-index: 2;
+}
+
+#uno:checked~.tres,
+#dole:checked~.una,
+#tele:checked~.dos {
+	animation: 1.5s fuera-dch;
+	animation-fill-mode: forwards;
+	transform-origin: center right;
+	z-index: 2;
+}
+
+#uno:checked~.una,
+#dole:checked~.dos,
+#tele:checked~.tres {
+	animation: 2s central;
+	animation-fill-mode: forwards;
+	transform-origin: center center;
+	z-index: 3;
+}
+
+@keyframes fuera-izq {
+	0% {
+		transform: scale(1) translatex(0%);
+	}
+	70% {
+		transform: scale(.9) translatex(-100%);
+	}
+	100% {
+		transform: scale(.9) translatex(-7%);
+	}
+}
+
+@keyframes fuera-dch {
+	0% {
+		transform: scale(1) translatex(0%);
+	}
+	70% {
+		transform: scale(.9) translatex(100%);
+	}
+	100% {
+		transform: scale(.9) translatex(7%);
+	}
+}
+
+@keyframes central {
+	0% {
+		transform: scale(.8);
+		z-index: 1;
+	}
+	80% {
+		transform: scale(.5);
+		z-index: 3;
+	}
+	100% {
+		transform: scale(1);
+		z-index: 3;
+	}
+}
+
+@keyframes pulso {
+	50% {
+		opacity: .7;
+	}
+}
